@@ -3,22 +3,34 @@ public:
     vector<vector<int>> merge(vector<vector<int>>& intervals) {
         
             vector<vector<int>> ans;
+        //base case
            if(intervals.size()==0)
                return ans;
         
         sort(intervals.begin(),intervals.end());
-        vector<int> temp=intervals[0];
+        ans.push_back(intervals[0]);
         
-        for(auto it:intervals){
-           if(it[0]<=temp[1]){
-               temp[1]=max(temp[1],it[1]);
+        int j=0;
+        for(int i=1;i<intervals.size();i++){
+            if(ans[j][1]>=intervals[i][0])
+                ans[j][1]=max(ans[j][1],intervals[i][1]);
+          
+            
+            else {
+                j++;
+              
+                ans.push_back(intervals[i]);
+            }
         }
-        else{
-            ans.push_back(temp);
-            temp =it;
-        }
-    }
-        ans.push_back(temp);
-        return ans;
+        
+            return ans;
+            
+            
+                
+        
+        
     }
 };
+
+
+
