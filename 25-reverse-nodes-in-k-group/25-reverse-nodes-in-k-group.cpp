@@ -11,12 +11,12 @@
 class Solution {
 public:
     ListNode* reverseKGroup(ListNode* head, int k) {
-         if( k == 1 || head == nullptr || getCount(head) < k )
+         if( k == 1 || head == NULL || getCount(head) < k )
             return head;  
         
         ListNode* curr = head;
-        ListNode* next = nullptr;
-        ListNode* prev = nullptr;
+        ListNode* next = NULL;
+        ListNode* prev = NULL;
 
         int count = 0;         
         while(curr != NULL && count < k){
@@ -33,7 +33,7 @@ public:
 private:
     int getCount(ListNode* node){
         int count = 0;
-        while(node != nullptr){
+        while(node != NULL){
             node = node->next;
             ++count;
         }
